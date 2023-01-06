@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Gold : Item
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] int goldAmount;
+    [SerializeField] EntityGold playergold;
+    public event Action<int> AddGold;
+
+    public override void ApplyEffect()
     {
-        
+        GameObject.FindGameObjectWithTag("Player")?.GetComponent<EntityGold>()?.GoldInfo_AddGold(goldAmount);
+        AddGold?.Invoke(goldAmount);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
+
 
 public class GoldUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] TMP_Text goldText;
+    [SerializeField] EntityGold playerGold;
+
+    UnityEvent onGoldChange;
+
+    private void Awake()
     {
-        
+
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        playerGold.GoldChanged += PlayerGold_GoldChanged;
+    }
+
+    private void PlayerGold_GoldChanged(int obj)
+    {
+        goldText.text = "Gold : " + obj.ToString();
+    }
+
     void Update()
     {
         
     }
+
 }
