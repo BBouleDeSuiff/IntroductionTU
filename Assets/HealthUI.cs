@@ -22,6 +22,7 @@ public class HealthUI : MonoBehaviour
     }
     void UpdateSlider(int newHealthValue)
     {
+        _slider.maxValue = CachedMaxHealth;
         _slider.value = newHealthValue;
         _text.text = $"{newHealthValue} / {CachedMaxHealth}";
     }
