@@ -8,29 +8,42 @@ public class AnimatorBinding : MonoBehaviour
     private Animator _playerAnimator;
     private GameObject _player;
 
-    private Vector2 MoveValues   
-    {
-        get { return _player.GetComponent<PlayerMove>().JoystickDirection; }
-    }
+    [SerializeField] PlayerMove _playermove;
+    [SerializeField] PlayerAttack _playerAttack;
+    [SerializeField] EntityHealth _playerHealth;
 
-    // Start is called before the first frame update
     void Awake()
     {
         _playerAnimator = gameObject.GetComponent<Animator>();
         _player = transform.parent.gameObject;
+
+        _playerAttack.OnAttack += _playerAttack_OnAttack;
+
+        _playerHealth.OnDamage += _playerHealth_OnDamage;
+
+        _playermove.OnStartMove += _playermove_OnStartMove;
+        _playermove.OnStopMove += _playermove_OnStopMove;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void _playermove_OnStartMove()
     {
-        SetWalking();
+        _playerAnimator.SetBool("Walking", true);
     }
-    void SetWalking()
+    private void _playermove_OnStopMove()
     {
-        if (MoveValues.x > 0.1f || MoveValues.x < -0.1f || MoveValues.y > 0.1f || MoveValues.y < -0.1f)
-            _playerAnimator.SetBool("Walking", true);
-        else
-            _playerAnimator.SetBool("Walking", false);
+        _playerAnimator.SetBool("Walking", false);
     }
-    
+
+    private void _playerAttack_OnAttack()
+    {
+        _playerAnimator.SetTrigger("Attack");
+    }
+
+    private void _playerHealth_OnDamage()
+    {
+        _playerAnimator.SetTrigger("GetHit");
+    }
+
+
 }

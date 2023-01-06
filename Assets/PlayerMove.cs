@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     // Event pour les dev
     public event Action OnStartMove;
+    public event Action OnStopMove;
     public event Action<int> OnHealthUpdate;
 
     // Event pour les GD
@@ -32,12 +33,6 @@ public class PlayerMove : MonoBehaviour
         _move.action.performed += UpdateMove;
         _move.action.canceled += StopMove;
 
-        // Code d'exemple
-        Action a; // void Function()
-        Action<int, string> a2; // void Function(int param1, string param2)
-
-        Func<int> f; // int Function()
-        Func<int, string, float> f2; // float Function(int param1, string param2)
     }
 
     private void OnDestroy()
@@ -91,12 +86,9 @@ public class PlayerMove : MonoBehaviour
     }
     private void StopMove(InputAction.CallbackContext obj)
     {
+        OnStopMove?.Invoke();
         StopCoroutine(MovementRoutine);
         JoystickDirection = Vector2.zero;
         Debug.Log($"Stop Move : {obj.ReadValue<Vector2>()}");
     }
-
-
-
-
 }

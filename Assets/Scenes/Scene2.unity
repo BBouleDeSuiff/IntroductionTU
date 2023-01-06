@@ -373,6 +373,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcca2186ac283d449a0bab40d85dce73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackDuration: 1
+  _attack: {fileID: -3022258767986154998, guid: 7465c15ff2f50e14295da1356a60d5be,
+    type: 3}
+  _onAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &114295033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,6 +1078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146f949b2997a444ebf55082568c8448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playermove: {fileID: 114295033}
+  _playerAttack: {fileID: 114295032}
+  _playerHealth: {fileID: 114295030}
 --- !u!1 &637623926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,6 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f72b57696a4fd44686ee9ab3191a519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 20
 --- !u!95 &1445710144
 Animator:
   serializedVersion: 4
@@ -1888,8 +1898,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2199692, y: 1, z: 1.0704373}
+  m_Center: {x: 7.0562363, y: 0, z: 3.473679}
 --- !u!4 &1445710146
 Transform:
   m_ObjectHideFlags: 0
@@ -2383,7 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 291506990}
-  _text: {fileID: 0}
+  _text: {fileID: 1124128128}
   _playerHealth: {fileID: 114295030}
 --- !u!1 &1916811639
 GameObject:
@@ -2498,6 +2508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f72b57696a4fd44686ee9ab3191a519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
 --- !u!65 &1943494893
 BoxCollider:
   m_ObjectHideFlags: 0

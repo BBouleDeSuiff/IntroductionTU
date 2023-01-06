@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HealthUI : MonoBehaviour
 {
@@ -10,9 +11,19 @@ public class HealthUI : MonoBehaviour
     [SerializeField] Slider _slider;
     [SerializeField] TextMeshProUGUI _text;
     [SerializeField] EntityHealth _playerHealth;
-
-    int CachedMaxHealth { get; set; }
-
+    int CachedMaxHealth
+    {
+        get { return _playerHealth._maxHealth; }
+        set { }
+    }
+    //private void Start()
+    //{
+        
+    //}
+    void Update()
+    {
+        UpdateSlider(_playerHealth.CurrentHealth);
+    }
     void UpdateSlider(int newHealthValue)
     {
         _slider.value = newHealthValue;
