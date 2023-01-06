@@ -13,13 +13,9 @@ public class HealthUI : MonoBehaviour
     [SerializeField] EntityHealth _playerHealth;
     int CachedMaxHealth
     {
-        get { return _playerHealth._maxHealth; }
+        get { return _playerHealth.MaxHealth; }
         set { }
     }
-    //private void Start()
-    //{
-        
-    //}
     void Update()
     {
         UpdateSlider(_playerHealth.CurrentHealth);

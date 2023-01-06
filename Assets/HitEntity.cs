@@ -9,7 +9,7 @@ public class HitEntity : MonoBehaviour
     private void OnTriggerEnter(Collider entity)
     {
         print(entity.transform.parent.name);
-        entity.transform.parent.GetComponent<EntityHealth>().TakeDamage(_damage);
+        entity.transform.parent.GetComponent<EntityHealth>()?.TakeDamage(_damage);
     }
 
 }
